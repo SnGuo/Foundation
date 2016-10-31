@@ -6,7 +6,7 @@ import android.widget.ImageView;
  * Created by SAG on 2016/10/31 0031.
  */
 
-public class ImageHelper<T extends ImageView> implements ImageStamp<T> {
+public class ImageHelper {
 
     private static ImageStamp mStamp;
 
@@ -14,8 +14,7 @@ public class ImageHelper<T extends ImageView> implements ImageStamp<T> {
         mStamp = stamp;
     }
 
-    @Override
-    public void loadImage(T view, String url, float aspectRatio) {
+    public static <T extends ImageView> void loadImage(T view, String url, float aspectRatio) {
         mStamp.loadImage(view, url, aspectRatio);
     }
 }
