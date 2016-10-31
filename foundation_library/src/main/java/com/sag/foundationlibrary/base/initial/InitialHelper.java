@@ -1,106 +1,69 @@
 package com.sag.foundationlibrary.base.initial;
 
-import android.content.Context;
-
-import com.sag.foundationlibrary.base.file.FileHelper;
-import com.sag.foundationlibrary.base.file.FileStamp;
-import com.sag.foundationlibrary.base.server.ServerHelper;
-import com.sag.foundationlibrary.base.server.ServerStamp;
-import com.sag.foundationlibrary.base.util.ContextUtil;
-
 /**
  * Created by SAG on 2016/10/31 0031.
  */
 
-public class InitialHelper implements InitialStamp {
+public class InitialHelper {
 
-    private InitialStamp stamp;
-
-    private static InitialHelper mHelper;
+    private static InitialStamp stamp;
 
     private InitialHelper(InitialStamp initial) {
-        this.stamp = initial;
     }
 
-    public static <T extends InitialStamp, U extends FileStamp, V extends ServerStamp> void initialize(Context context, Class<T> initial, Class<U> file, Class<V> server) {
-        ContextUtil.initialize(context);
-        try {
-            mHelper = new InitialHelper(initial.newInstance());
-            FileHelper.initialize(file.newInstance());
-            ServerHelper.initialize(server.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+    public static void initialize(InitialStamp stamp) {
+        InitialHelper.stamp = stamp;
     }
 
-    public static InitialHelper getInstance() {
-        return mHelper;
-    }
-
-    @Override
-    public int getLayoutEmpty() {
+    public static int getLayoutEmpty() {
         return stamp.getLayoutEmpty();
     }
 
-    @Override
-    public int getLayoutError() {
+    public static int getLayoutError() {
         return stamp.getLayoutError();
     }
 
-    @Override
-    public int getLayoutLoading() {
+    public static int getLayoutLoading() {
         return stamp.getLayoutLoading();
     }
 
-    @Override
-    public int getToolbarColor() {
+    public static int getToolbarColor() {
         return stamp.getToolbarColor();
     }
 
-    @Override
-    public int getBackgroundColor() {
+    public static int getBackgroundColor() {
         return stamp.getBackgroundColor();
     }
 
-    @Override
-    public int getTimeMine() {
+    public static int getTimeMine() {
         return stamp.getTimeMine();
     }
 
-    @Override
-    public int getTimeOut() {
+    public static int getTimeOut() {
         return stamp.getTimeOut();
     }
 
-    @Override
-    public String getPromptAwait() {
+    public static String getPromptAwait() {
         return stamp.getPromptAwait();
     }
 
-    @Override
-    public String getPromptDisconnect() {
+    public static String getPromptDisconnect() {
         return stamp.getPromptDisconnect();
     }
 
-    @Override
-    public String getServiceUrl() {
+    public static String getServiceUrl() {
         return stamp.getServiceUrl();
     }
 
-    @Override
-    public String getDesKey() {
+    public static String getDesKey() {
         return stamp.getDesKey();
     }
 
-    @Override
-    public boolean isDebug() {
+    public static boolean isDebug() {
         return stamp.isDebug();
     }
 
-    @Override
-    public boolean isEncrypt() {
+    public static boolean isEncrypt() {
         return stamp.isEncrypt();
     }
 }
